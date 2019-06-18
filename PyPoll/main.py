@@ -41,13 +41,14 @@ if correy > khan and correy > otooley and correy > li:
 if li > otooley and li > correy and li > khan:
     winner = "Li"
 
+#print(set(candidates))
+
 
 #OUTPUT
 print("Election Results")
 print("----------------------------")
 print(f"Total Votes: {votes}")
 print("----------------------------")
-#print(set(candidates))
 print(f"Khan: {per_k}% ({khan})")
 print(f"O'Tooley: {per_o}% ({otooley})")
 print(f"Correy: {per_c}% ({correy})")

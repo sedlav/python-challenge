@@ -14,12 +14,16 @@ with open(path, 'r') as file:
     reader = csv.DictReader(file)
     
     for line in reader:
-        #print(line['Profit/Losses'])
+        pl = int(line['Profit/Losses'])
+       # print(line['Profit/Losses'])
         months += 1
-        total += int(line['Profit/Losses'])
+        total += pl
+
         
-#        if int(line['Profit/Losses']) > max_inc:
-#            max_inc = line
+        if pl > max_inc:
+           max_inc = pl
+        if pl < min_dec:
+            min_dec = pl
 
 #print(max_inc)
         
@@ -33,8 +37,8 @@ print("----------------------------")
 print(f"Total Months: {months}")
 print(f"Total: ${total}")
 print(f"Average Change: ${avg}")
-print(f"Greatest Increase in Profits:")
-print(f"Greatest Decrease in Profits:")
+print(f"Greatest Increase in Profits: ${max_inc}")
+print(f"Greatest Decrease in Profits: ${min_dec}")
 
 output_path = os.path.join("results.csv")
 
@@ -46,7 +50,7 @@ with open(output_path, 'w', newline='') as results:
     csvwriter.writerow([f"Total Months: {months}"])
     csvwriter.writerow([f"Total: ${total}"])
     csvwriter.writerow([f"Average Change: ${avg}"])
-    csvwriter.writerow([f"Greatest Increase in Profits:"])
-    csvwriter.writerow([f"Greatest Decrease in Profits:"])
+    csvwriter.writerow([f"Greatest Increase in Profits: $ {max_inc}"])
+    csvwriter.writerow([f"Greatest Decrease in Profits: ${min_dec}"])
 
     
